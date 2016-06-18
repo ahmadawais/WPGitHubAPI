@@ -5,8 +5,8 @@ NOTE: WPGitHubAPI plugin uses transients to cache the counts for `24 * HOUR_IN_S
 
 ## Shortcode
 - `[wga]` shortcode accepts following parameters
-    + `u='api_url'` where api_url is the part of API after `https://api.github.com/` E.g. `users/ahmadawais` will return my [profile data](https://api.github.com/users/ahmadawais).
-    + `d='data'` where data is the object's data you want to retrieve E.g. `followers` will return the number of followers for my profile.
+    + `u='api_url'` where `api_url` is the part of API after `https://api.github.com/` E.g. `users/ahmadawais` will return my [profile data](https://api.github.com/users/ahmadawais).
+    + `d='data'` where `data` is the object's data you want to retrieve E.g. `followers` will return the number of followers for my profile.
 
 ### Examples
 - My GitHub Followers Count: `[wga u='users/ahmadawais' d='followers']`
