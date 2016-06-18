@@ -1,5 +1,5 @@
 # WPGitHubAPI
-`[wga]` Shortcode to obtain resources from official GitHub API v3.. 
+`[wga]` Shortcode to obtain resources from official GitHub API v3.
 
 NOTE: WPGitHubAPI plugin uses transients to cache the counts for `24 * HOUR_IN_SECONDS`.
 
