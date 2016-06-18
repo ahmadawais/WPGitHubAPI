@@ -57,6 +57,9 @@ class WP_GitHub_API_Shortcodes {
 		// API URL.
 		$_api_url = $_atts['u'];
 
+		// Remove `/` in the beginning or at the end.
+		$_api_url = preg_replace( '/^\/|\/$/', '', $_api_url );
+
 		// Data.
 		$_data = $_atts['d'];
 
@@ -80,8 +83,8 @@ class WP_GitHub_API_Shortcodes {
 	 * @since 0.0.2
 	 */
 	public function get_api( $api_url, $data ) {
-		// Set a transient.
-		$transient = 'wga_response_' . $data;
+		// Set a transient with API_URL and DATA.
+		$transient = 'wga_response_' . $api_url . '_'. $data;
 
 		/**
 		// Delete trasient for debugging.
