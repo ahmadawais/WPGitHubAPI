@@ -5,7 +5,7 @@
  * Main class for shortcodes.
  *
  * @since 	0.0.1
- * @package WTA
+ * @package WGA
  */
 
 // Exit if accessed directly.
