@@ -77,7 +77,8 @@ class WP_GitHub_API_Shortcodes {
 		$transient = 'wga_response';
 
 		// Delete trasient for debugging.
-		delete_transient( $transient ); // For Debugging.
+		// delete_transient( $transient );
+
 		// Get the value.
 		$wga_transient = get_transient( $transient );
 
