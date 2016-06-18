@@ -24,6 +24,9 @@ You can use [GitHub Updater](https://github.com/afragen/github-updater) to recei
 
 ## Changelog
 
+### Version 0.0.2
+- FIX: Custom data related transients.
+
 ### Version 0.0.1
 - First beta version.
 

@@ -5,7 +5,7 @@
  * Description: Shortcode to obtain resources from official GitHub API v3.
  * Author: mrahmadawais, WPTie
  * Author URI: http://AhmadAwais.com/
- * Version: 0.0.3
+ * Version: 0.0.2
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * GitHub Plugin URI: https://github.com/ahmadawais/WPGitHubAPI/
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define global constants.
  *
- * @since 1.0.0
+ * @since 0.0.2
  */
 if ( ! defined( 'WGA_NAME' ) ) {
     define( 'WGA_NAME', trim( dirname( plugin_basename( __FILE__ ) ), '/' ) );

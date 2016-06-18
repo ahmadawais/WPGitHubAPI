@@ -54,11 +54,17 @@ class WP_GitHub_API_Shortcodes {
 		        'u' => 'repos/ahmadawais/WPGulp', 	// API URL.
 		        'd' => 'name', 						// Data.
 		    ), $atts );
+		// API URL.
+		$_api_url = $_atts['u'];
+
+		// Data.
+		$_data = $_atts['d'];
+
 		// Get WPTAlly's object.
-		$wpgapi_response = $this->get_stats( $_atts['u'] );
+		$wpgapi_response = $this->get_api( $_api_url, $_data );
 
 		// Bail if there is an error.
-		if ( ! is_object( $wpgapi_response ) ) {
+		if ( ! is_object( $wpgapi_response ) || is_wp_error( $wpgapi_response ) ) {
 			return $wpgapi_response;
 		}
 
@@ -70,14 +76,17 @@ class WP_GitHub_API_Shortcodes {
 	 * WP HTTP API GET.
 	 *
 	 * @param API URL $api_url Remaining API URL from user.
-	 * @since 1.0.0
+	 * @param Data 	  $data Data to be retreieved.
+	 * @since 0.0.2
 	 */
-	public function get_stats( $api_url ) {
+	public function get_api( $api_url, $data ) {
 		// Set a transient.
-		$transient = 'wga_response';
+		$transient = 'wga_response_' . $data;
 
+		/**
 		// Delete trasient for debugging.
 		// delete_transient( $transient );
+		*/
 
 		// Get the value.
 		$wga_transient = get_transient( $transient );
