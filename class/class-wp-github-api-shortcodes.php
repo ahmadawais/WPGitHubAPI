@@ -61,9 +61,11 @@ class WP_GitHub_API_Shortcodes {
 	public function shortcode( $atts ) {
 		// Save $atts.
 		$_atts = shortcode_atts( array(
-		        'u' => 'repos/ahmadawais/WPGulp', 	// API URL.
-		        'd' => 'name', 						// Data.
-		        'r' => 'n', 						// Readme.
+				'u'  => 'repos/ahmadawais/WPGulp', 	// API URL.
+				'd'  => 'name', 					// Data.
+				'r'  => 'n', 						// Readme.
+				'h1' => 'y', 						// Remove h1.
+				'h2' => 'y', 						// Convert h1 to h2.
 		    ), $atts );
 		// API URL.
 		$_api_url = $_atts['u'];
@@ -76,6 +78,12 @@ class WP_GitHub_API_Shortcodes {
 
 		// Is Readme?
 		$_readme = $_atts['r'];
+
+		// Is h1 in content? Mostly the title.
+		$_is_h1 = $_atts['h1'];
+
+		// Is Convert h1 to h2?
+		$_ish1toh2 = $_atts['h2'];
 
 		// Get WPTAlly's object.
 		$wpgapi_response = $this->get_api( $_api_url, $_data );
@@ -94,13 +102,40 @@ class WP_GitHub_API_Shortcodes {
 			$_readme_decoded = base64_decode( $_readme_b64 );
 
 			// Init an object.
-			$parsedown_obj = new Parsedown();
+			$parsedown_obj = new \WGA\Parsedown();
 
 			// Convert markdown to HTML.
 			$_readme_html = $parsedown_obj->text( $_readme_decoded );
 
+			// Remove h1.
+			if ( 'n' == $_is_h1 ) {
+				// Convert all h1's to h2 for better SEO.
+				$_readme_remove_h1 = preg_replace('/<h1[^>]*>([\s\S]*?)<\/h1[^>]*>/', '', $_readme_html);
+
+				// Return it, Safe in PHP 7.0.
+				$_return = $_readme_remove_h1;
+
+				// Return!
+				return $_return;
+			}
+
+			// Convert h1 to h2.
+			if ( 'y' == $_ish1toh2 ) {
+				// Convert all h1's to h2 for better SEO.
+				$_readme_h1toh2 = preg_replace('/<h1[^>]*>([\s\S]*?)<\/h1[^>]*>/', '<h2>$1</h2>', $_readme_html);
+
+				// Return it, Safe in PHP 7.0.
+				$_return = $_readme_h1toh2;
+
+				// Return!
+				return $_return;
+			}
+
+			// Return it, Safe in PHP 7.0.
+			$_return = $_readme_html;
+
 			// Return the data.
-			return $_readme_html;
+			return $_return;
 		}
 
 		// Return it, Safe in PHP 7.0.

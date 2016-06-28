@@ -7,6 +7,9 @@ NOTE: WPGitHubAPI plugin uses transients to cache the counts for `24 * HOUR_IN_S
 - `[wga]` shortcode accepts following parameters
     + `u='api_url'` where `api_url` is the part of API after `https://api.github.com/` E.g. `users/ahmadawais` will return my [profile data](https://api.github.com/users/ahmadawais).
     + `d='data'` where `data` is the object's data you want to retrieve E.g. `followers` will return the number of followers for my profile.
+    + GitHub Readme Parser with `r='y'` attribute in the shortcode.
+    + Remove `h1` with `h1=y|n` attribute in the shortcode.
+    + Convert `h1` to `h2` with `h2=y|n` attribute in the shortcode.
 
 ### Examples
 - My GitHub Followers Count: `[wga u='users/ahmadawais' d='followers']`
@@ -23,6 +26,10 @@ NOTE: WPGitHubAPI plugin uses transients to cache the counts for `24 * HOUR_IN_S
 You can use [GitHub Updater](https://github.com/afragen/github-updater) to receive updates for this plugin. 
 
 ## Changelog
+
+### Version 0.0.6
+- NEW: Should there be `h1` with `h1=y|n`.
+- NEW: Should convert `h1` to `h2` with `h2=y|n`.
 
 ### Version 0.0.5
 - NEW: Basic PHPUnit tests.

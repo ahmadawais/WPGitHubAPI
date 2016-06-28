@@ -1,8 +1,13 @@
 #WPGitHubAPI
 
+### Version 0.0.6
+- NEW: Should there be `h1` with `h1=y|n`.
+- NEW: Should convert `h1` to `h2` with `h2=y|n`.
+
 ### Version 0.0.5
 - NEW: Basic PHPUnit tests.
 - NEW: GitHub Readme Parser with `r='y'` attribute in the shortcode.
+
 
 ### Version 0.0.4
 - WP.org Repo submission.
