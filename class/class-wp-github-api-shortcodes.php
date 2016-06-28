@@ -13,6 +13,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Parsedown.
+ *
+ * @since 0.0.2
+ * @link https://github.com/erusev/parsedown
+ */
+if ( file_exists( WGA_DIR . '/class/class-parsedown.php' ) ) {
+    require_once( WGA_DIR . '/class/class-parsedown.php' );
+}
+
 if ( ! class_exists( 'WP_GitHub_API_Shortcodes' ) ) :
 
 /**
@@ -53,6 +63,7 @@ class WP_GitHub_API_Shortcodes {
 		$_atts = shortcode_atts( array(
 		        'u' => 'repos/ahmadawais/WPGulp', 	// API URL.
 		        'd' => 'name', 						// Data.
+		        'r' => 'n', 						// Readme.
 		    ), $atts );
 		// API URL.
 		$_api_url = $_atts['u'];
@@ -63,6 +74,9 @@ class WP_GitHub_API_Shortcodes {
 		// Data.
 		$_data = $_atts['d'];
 
+		// Is Readme?
+		$_readme = $_atts['r'];
+
 		// Get WPTAlly's object.
 		$wpgapi_response = $this->get_api( $_api_url, $_data );
 
@@ -71,8 +85,29 @@ class WP_GitHub_API_Shortcodes {
 			return $wpgapi_response;
 		}
 
+		// Decode b64 if it is Readme to HTML.
+		if ( 'y' == $_readme ) {
+			// Get the response.
+			$_readme_b64 = $wpgapi_response->$_atts['d'];
+
+			// Decode b64.
+			$_readme_decoded = base64_decode( $_readme_b64 );
+
+			// Init an object.
+			$parsedown_obj = new Parsedown();
+
+			// Convert markdown to HTML.
+			$_readme_html = $parsedown_obj->text( $_readme_decoded );
+
+			// Return the data.
+			return $_readme_html;
+		}
+
+		// Return it, Safe in PHP 7.0.
+		$_return = $wpgapi_response->$_atts['d'];
+
 		// Return the data.
-		return $wpgapi_response->$_atts['d'];
+		return $_return;
 	}
 
 	/**
