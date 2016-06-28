@@ -1,5 +1,6 @@
 <?php
-
+// Add namespace to be on the safe side and play well with other plugins.
+namespace WGA;
 #
 #
 # Parsedown
