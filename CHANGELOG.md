@@ -1,5 +1,9 @@
 #WPGitHubAPI
 
+### Version 0.0.5
+- NEW: Basic PHPUnit tests.
+- NEW: GitHub Readme Parser with `r='y'` attribute in the shortcode.
+
 ### Version 0.0.4
 - WP.org Repo submission.
 - NEW: `README.txt`.

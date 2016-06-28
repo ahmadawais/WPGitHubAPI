@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Parsedown.
  *
- * @since 0.0.2
+ * @since 0.0.5
  * @link https://github.com/erusev/parsedown
  */
 if ( file_exists( WGA_DIR . '/class/class-parsedown.php' ) ) {
