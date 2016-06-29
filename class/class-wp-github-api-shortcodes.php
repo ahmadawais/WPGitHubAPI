@@ -153,13 +153,26 @@ class WP_GitHub_API_Shortcodes {
 	 * @since 0.0.2
 	 */
 	public function get_api( $api_url, $data ) {
-		// Set a transient with API_URL and DATA.
-		$transient = 'wga_response_' . $api_url . '_'. $data;
+		// Transients are 172 characters only.
+		// Get the words only. In array.
+		$_api_url_words = explode( '/', $api_url );
 
-		/**
+		// Save acronym.
+		$_api_url_acronym = '';
+
+		// Run through each word of array.
+		foreach ( $_api_url_words as $word ) {
+			// Uppercase and get last 3 (-3) characters and 3 of them from each word.
+			$_api_url_acronym .= strtoupper( substr( $word, -3, 3 ) );
+		}
+
+		// Set a transient with API_URL and DATA.
+		$transient = 'wga_' . $_api_url_acronym . '_'. $data;
+
+		// /**
 		// Delete trasient for debugging.
 		// delete_transient( $transient );
-		*/
+		// */
 
 		// Get the value.
 		$wga_transient = get_transient( $transient );
