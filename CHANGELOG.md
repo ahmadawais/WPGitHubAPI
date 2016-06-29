@@ -1,5 +1,8 @@
 #WPGitHubAPI
 
+### Version 0.0.7
+- NEW: Transients below 172 characters
+
 ### Version 0.0.6
 - NEW: Should there be `h1` with `h1=y|n`.
 - NEW: Should convert `h1` to `h2` with `h2=y|n`.
