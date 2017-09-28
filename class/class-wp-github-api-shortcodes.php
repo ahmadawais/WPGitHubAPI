@@ -96,7 +96,8 @@ class WP_GitHub_API_Shortcodes {
 		// Decode b64 if it is Readme to HTML.
 		if ( 'y' == $_readme ) {
 			// Get the response.
-			$_readme_b64 = $wpgapi_response->$_atts['d'];
+			$_readme_b64 = $wpgapi_response->{$_atts['d']};
+			// OR: $_readme_b64 = $wpgapi_response->$_data;
 
 			// Decode b64.
 			$_readme_decoded = base64_decode( $_readme_b64 );
@@ -139,7 +140,8 @@ class WP_GitHub_API_Shortcodes {
 		}
 
 		// Return it, Safe in PHP 7.0.
-		$_return = $wpgapi_response->$_atts['d'];
+		$_return = $wpgapi_response->{$_atts['d']};
+		// OR: $_return = $wpgapi_response->$_data;
 
 		// Return the data.
 		return $_return;
