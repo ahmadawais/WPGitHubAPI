@@ -95,9 +95,24 @@ if ( ! class_exists( 'WP_GitHub_API_Shortcodes' ) ) :
 
 			// Decode b64 if it is Readme to HTML.
 			if ( 'y' == $_readme ) {
-				// Get the response. {} fix for PHP 7.
-				// OR: $_readme_b64 = $wpgapi_response->$_data; End.
-				$_readme_b64 = $wpgapi_response->{$_atts['d']};
+				// Get the response.
+				$_readme_b64 = $wpgapi_response->$_data;
+
+				// Nothingness. API Rate Limit maybe! Gracefully show the GitHub repo link.
+				if ( $_readme_b64 === NULL ) {
+					// Remove repo from it.
+					$get_user_repo = preg_replace( '/\brepos\b/i', '', $_api_url );
+					$get_user_repo = preg_replace( '/\breadme\b/i', '', $get_user_repo );
+
+					$github_url = 'https://github.com' . $get_user_repo;
+
+					// Debug.
+					if ( true === WP_DEBUG ) {
+						$api_message = $wpgapi_response->message;
+						return 'Content not available right now... <br> <div><strong>REASON: </strong>' . $api_message . '</div><br> <div>VAR DUMPED: </div>' . var_dump( $wpgapi_response );
+					}
+					return 'How about you checkout the <a href="' . $github_url . '">repository on GitHub</a> →';
+				}
 
 				// Decode b64.
 				$_readme_decoded = base64_decode( $_readme_b64 );
@@ -139,12 +154,8 @@ if ( ! class_exists( 'WP_GitHub_API_Shortcodes' ) ) :
 				return $_return;
 			}
 
-			// Return it, Safe in PHP 7.0. {} fix for PHP 7.
-			// OR: $_return = $Wpgapi_response->$_data; End.
-			$_return = $wpgapi_response->{$_atts['d']};
-
 			// Return the data.
-			return $_return;
+			return $wpgapi_response->$_data;
 		}
 
 		/**

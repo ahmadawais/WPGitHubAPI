@@ -27,6 +27,9 @@ You can use [GitHub Updater](https://github.com/afragen/github-updater) to recei
 
 ## Changelog
 
+### Version 0.0.8
+- IMPROVE: Gracefully show the GitHub repo link on API rate limiting.
+
 ### Version 0.0.7
 - IMPROVE: PHP 7 compat — thanks to @[tfirdaus](https://github.com/tfirdaus) for PR #[1](https://github.com/ahmadawais/WPGitHubAPI/pull/1).
 - FIX: PHP CS Issues like weird spacing and tabs.

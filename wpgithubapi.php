@@ -5,7 +5,7 @@
  * Description: Shortcode to obtain resources from official GitHub API v3.
  * Author: mrahmadawais, WPTie
  * Author URI: http://AhmadAwais.com/
- * Version: 0.0.7
+ * Version: 0.0.8
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * GitHub Plugin URI: https://github.com/ahmadawais/WPGitHubAPI/
